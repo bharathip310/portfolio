@@ -93,6 +93,15 @@ export default function App() {
   const [introStarted, setIntroStarted] = useState(false);
   const [introUnmounted, setIntroUnmounted] = useState(false);
 
+  useEffect(() => {
+    // If mobile, bypass the intro immediately
+    if (window.innerWidth <= 768) {
+      setIntroStarted(true);
+      setIntroUnmounted(true);
+      document.body.style.overflow = "auto";
+    }
+  }, []);
+
   const handleIntroComplete = () => {
     // This is called by CinematicIntro when the user scrolls to enter
     setIntroStarted(true);
