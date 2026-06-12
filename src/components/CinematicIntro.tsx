@@ -26,11 +26,11 @@ export default function CinematicIntro({ onComplete, isTransitioningOutExternal 
       // This prevents React's heavy DOM mounting from lagging the animation frames
       setTimeout(() => {
           onComplete();
-      }, 700);
+      }, 400);
 
       setTimeout(() => {
           document.body.style.overflow = "auto";
-      }, 1000);
+      }, 700);
     };
 
     const handleWheel = () => handleProgress();
@@ -81,7 +81,7 @@ export default function CinematicIntro({ onComplete, isTransitioningOutExternal 
         animate={{ scale, opacity: isTransitioningOut ? 0 : 1, y: isTransitioningOut ? -50 : 0 }}
         initial={{ opacity: 0, y: 40, scale: 0.95 }}
         transition={{ 
-            duration: isTransitioningOut ? 0.8 : 2, 
+            duration: isTransitioningOut ? 0.4 : 1, 
             ease: isTransitioningOut ? [0.6, 0.01, -0.05, 0.95] : [0.16, 1, 0.3, 1] 
         }}
         style={{ willChange: "transform, opacity" }}
@@ -124,23 +124,23 @@ export default function CinematicIntro({ onComplete, isTransitioningOutExternal 
                 <div className="drop-shadow-[0_0_20px_rgba(255,255,255,0.4)]">
                   <Typewriter
                     options={{
-                      delay: 30,
-                      deleteSpeed: 15,
+                      delay: 20,
+                      deleteSpeed: 10,
                     }}
                     onInit={(typewriter) => {
                       typewriter
-                        .pauseFor(500)
+                        .pauseFor(100)
                         .typeString('<span style="color:#FFF; font-weight: 300;">Hello 👋</span>')
-                        .pauseFor(400)
+                        .pauseFor(200)
                         .deleteAll()
                         .typeString('<span style="color:#FFF; font-weight: 300;">Welcome to my digital space</span>')
-                        .pauseFor(400)
+                        .pauseFor(200)
                         .deleteAll()
                         .typeString("<span style='color:#FFF; font-weight: 600; text-shadow: 0 0 20px rgba(255,255,255,0.3); font-size: 1.25em;'>I'm Bharathi P.</span>")
-                        .pauseFor(400)
+                        .pauseFor(200)
                         .deleteAll()
                         .typeString('<span style="color:#A0A0A0; font-weight: 300;">Software Engineer</span>')
-                        .pauseFor(300)
+                        .pauseFor(150)
                         .callFunction(() => {
                           setTypedDone(true);
                         })
@@ -155,7 +155,7 @@ export default function CinematicIntro({ onComplete, isTransitioningOutExternal 
                 <motion.div
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
-                  transition={{ delay: 2.5 }}
+                  transition={{ delay: 1.2 }}
                   exit={{ opacity: 0 }}
                   className="absolute bottom-10 font-sans text-[10px] md:text-[11px] text-white/50 uppercase tracking-[0.3em] font-medium animate-pulse z-20 flex items-center gap-2"
                 >
