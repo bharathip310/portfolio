@@ -63,16 +63,16 @@ export default function CinematicIntro({ onComplete, isTransitioningOutExternal 
         {/* Luxury Studio Environment Background */}
         <div className="absolute inset-0 pointer-events-none flex items-center justify-center overflow-hidden">
           {/* Soft volumetric top light */}
-          <div className="absolute top-[-20%] left-1/2 -translate-x-1/2 w-[100vw] h-[50vh] bg-blue-500/10 blur-[120px] rounded-full mix-blend-screen" />
+          <div className="hidden md:block absolute top-[-20%] left-1/2 -translate-x-1/2 w-[100vw] h-[50vh] bg-blue-500/10 blur-[120px] rounded-full mix-blend-screen" />
           
           {/* Subtle purple ambient glow */}
-          <div className="absolute bottom-[-10%] right-[-10%] w-[60vw] h-[60vw] bg-purple-600/5 blur-[150px] rounded-full mix-blend-screen" />
+          <div className="hidden md:block absolute bottom-[-10%] right-[-10%] w-[60vw] h-[60vw] bg-purple-600/5 blur-[150px] rounded-full mix-blend-screen" />
         
         {/* Particles / Dust */}
         <motion.div 
            animate={{ y: [0, -20, 0], opacity: [0.3, 0.6, 0.3] }}
            transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
-           className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.01)_1px,transparent_1px)] bg-[size:24px_24px] [mask-image:radial-gradient(ellipse_50%_50%_at_50%_50%,#000_10%,transparent_100%)] opacity-30" 
+           className="hidden md:block absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.01)_1px,transparent_1px)] bg-[size:24px_24px] [mask-image:radial-gradient(ellipse_50%_50%_at_50%_50%,#000_10%,transparent_100%)] opacity-30" 
         />
       </div>
 
@@ -84,15 +84,16 @@ export default function CinematicIntro({ onComplete, isTransitioningOutExternal 
             duration: isTransitioningOut ? 0.8 : 2, 
             ease: isTransitioningOut ? [0.6, 0.01, -0.05, 0.95] : [0.16, 1, 0.3, 1] 
         }}
+        style={{ willChange: "transform, opacity" }}
         className="relative flex flex-col items-center z-10"
       >
         {/* The Monitor (Premium Aluminum Design) */}
         <div className="relative w-[90vw] md:w-[900px] aspect-[16/10] md:aspect-[16/9] rounded-[24px] md:rounded-[32px] p-[6px] md:p-[8px] flex flex-col overflow-hidden z-10
           bg-gradient-to-b from-[#e0e0e0] via-[#888] to-[#333]
-          shadow-[0_20px_100px_rgba(0,0,0,0.8),0_0_0_1px_rgba(255,255,255,0.1)_inset]"
+          shadow-lg md:shadow-[0_20px_100px_rgba(0,0,0,0.8),0_0_0_1px_rgba(255,255,255,0.1)_inset]"
         >
           {/* Inner Black Bezel / Screen Area */}
-          <div className="flex-1 w-full h-full bg-[#050505] rounded-[18px] md:rounded-[26px] relative flex flex-col overflow-hidden ring-1 ring-black shadow-[inset_0_0_40px_rgba(0,0,0,1)]">
+          <div className="flex-1 w-full h-full bg-[#050505] rounded-[18px] md:rounded-[26px] relative flex flex-col overflow-hidden ring-1 ring-black shadow-inner md:shadow-[inset_0_0_40px_rgba(0,0,0,1)]">
             
             {/* Top Camera Array */}
             <div className="absolute top-4 left-1/2 -translate-x-1/2 flex items-center gap-4 z-30">
@@ -108,13 +109,13 @@ export default function CinematicIntro({ onComplete, isTransitioningOutExternal 
               
               {/* Futuristic Screen Background Elements */}
               <div className="absolute inset-0 overflow-hidden pointer-events-none">
-                 <div className="absolute top-0 left-0 w-full h-full bg-[linear-gradient(rgba(255,255,255,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.03)_1px,transparent_1px)] bg-[size:40px_40px] [mask-image:radial-gradient(ellipse_60%_60%_at_50%_50%,#000_20%,transparent_100%)] opacity-50" />
+                 <div className="hidden md:block absolute top-0 left-0 w-full h-full bg-[linear-gradient(rgba(255,255,255,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.03)_1px,transparent_1px)] bg-[size:40px_40px] [mask-image:radial-gradient(ellipse_60%_60%_at_50%_50%,#000_20%,transparent_100%)] opacity-50" />
                  
                  {/* Moving background glow */}
                  <motion.div 
                    animate={{ rotate: 360 }}
                    transition={{ duration: 30, repeat: Infinity, ease: "linear" }}
-                   className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120%] h-[120%] bg-[conic-gradient(from_0deg,transparent_0_340deg,rgba(59,130,246,0.1)_360deg)] rounded-full blur-[60px]" 
+                   className="hidden md:block absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120%] h-[120%] bg-[conic-gradient(from_0deg,transparent_0_340deg,rgba(59,130,246,0.1)_360deg)] rounded-full blur-[60px]" 
                  />
               </div>
 
@@ -165,8 +166,8 @@ export default function CinematicIntro({ onComplete, isTransitioningOutExternal 
               </AnimatePresence>
 
               {/* Advanced Screen Glare and reflections */}
-              <div className="absolute top-0 right-0 w-[150%] h-[150%] bg-gradient-to-bl from-white/[0.08] via-transparent to-transparent pointer-events-none -translate-y-1/2 translate-x-1/4 rotate-45 z-30 mix-blend-overlay" />
-              <div className="absolute bottom-0 left-0 w-full h-[30%] bg-gradient-to-t from-blue-500/[0.02] to-transparent pointer-events-none z-30 mix-blend-screen" />
+              <div className="hidden md:block absolute top-0 right-0 w-[150%] h-[150%] bg-gradient-to-bl from-white/[0.08] via-transparent to-transparent pointer-events-none -translate-y-1/2 translate-x-1/4 rotate-45 z-30 mix-blend-overlay" />
+              <div className="hidden md:block absolute bottom-0 left-0 w-full h-[30%] bg-gradient-to-t from-blue-500/[0.02] to-transparent pointer-events-none z-30 mix-blend-screen" />
             </div>
             
           </div>

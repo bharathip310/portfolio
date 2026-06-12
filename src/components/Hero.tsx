@@ -36,7 +36,9 @@ export default function Hero() {
 
     // Particle pool
     const particles: { x: number; y: number; z: number; size: number; color: string }[] = [];
-    for (let i = 0; i < 120; i++) {
+    const isMobile = window.innerWidth <= 768;
+    const particleCount = isMobile ? 40 : 120;
+    for (let i = 0; i < particleCount; i++) {
       particles.push({
         x: (Math.random() - 0.5) * 350,
         y: (Math.random() - 0.5) * 350,
